@@ -1,0 +1,67 @@
+{% extends 'main/main.html' %}
+
+{% block content %}
+
+    <br>
+
+    <div class="row">
+        <div class="col-md-5">
+            <h5>Existing:</h5>
+            <hr>
+            <div class="card card-body">
+                <a class="btn btn-primary  btn-sm btn-block" href="">Create admin</a>
+                <table class="table table-sm">
+                    <tr>
+                        <th></th>
+                        <th>E-Mail</th>
+                        <th>Name</th>
+                    </tr>
+
+                    {% for admins in admins %}
+                        <tr>
+                        {% if admins.is_accept %}
+                            <td><a class="btn btn-sm btn-info" href="">View</a></td>
+                            <td>{{ admins.user.email }}</td>
+                            <td>{{ admins.user.first_name }}</td>
+                        {% endif %}
+                        </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <h5>New Admin Request</h5>
+            <hr>
+            <div class="card card-body">
+
+                <table class="table table-sm">
+                    <tr>
+                        <th>Name</th>
+                        <th>E Mail</th>
+                        <th>Group</th>
+                        <th>Accept</th>
+                        <th>Remove</th>
+                    </tr>
+
+                    {% for admins in admins %}
+                        <tr>
+                            {% if admins.is_accept is False %}
+                                <td>{{admins.user.first_name}}</td>
+                                <td>{{admins.user.email}}</td>
+                                <td>{{ admins.user.groups.all.0 }}</td>
+                                <td><a class="btn btn-sm btn-info" href="{% url 'admin_accept' admins.id %}">Accept</a></td>
+                                <td><a class="btn btn-sm btn-danger" href="{% url 'admin_reject' admins.id %}">Delete</a></td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

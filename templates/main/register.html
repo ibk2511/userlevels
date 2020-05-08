@@ -1,0 +1,61 @@
+{% extends "main/main.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container" style="margin-top: 30px;">
+        <form method="post" action=".">
+            {% csrf_token %}
+            <div class="form-group row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="First name" name="first_name">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Last name" name="last_name">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputEmail3" name="email">
+                </div>
+            </div>
+                  <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Username</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputEmail3" name="username">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword3" name="password1">
+                </div>
+            </div>
+              <div class="form-group row">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">Confirm Password</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword3" name="password2">
+                </div>
+            </div>
+            <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">Usertypes</legend>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="user-type" id="gridRadios1"
+                               value="admin2" checked>
+                        <label class="form-check-label" for="gridRadios1">
+                            admin2 </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="user-type" id="gridRadios2"
+                               value="admin3">
+                        <label class="form-check-label" for="gridRadios2">
+                            admin3
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <input type="submit" class="btn btn-primary">
+        </form>
+    </div>
+{% endblock %}
